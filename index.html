@@ -2,220 +2,608 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Big Side Hustle | Structured Side Income</title>
-  <meta name="description" content="Structured side income tools and community. Track real net profit (not hype). Free Net Tracker for delivery drivers." />
-  <script>
-    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
-  </script>
-  <script defer src="/_vercel/insights/script.js"></script>
+  <meta
+    name="description"
+    content="Structured side income. No hype. Real numbers, repeatable systems, and a free Net Shift Tracker for UK delivery drivers."
+  />
+  <meta name="theme-color" content="#0b1220" />
+
+  <!-- Optional social preview (add an image in your repo if you want) -->
+  <!-- <meta property="og:image" content="/social-card.png" /> -->
+
   <style>
     :root{
-      --bg:#f6f8fc;
-      --card:#ffffff;
-      --text:#0b1220;
-      --muted:#475569;
-      --border:rgba(15,23,42,0.12);
-      --primary:#1F3A8A;
-      --accent:#2563EB;
-      --shadow: 0 10px 30px rgba(2,6,23,0.08);
+      --bg: #0b1220;
+      --panel: rgba(255,255,255,.06);
+      --panel2: rgba(255,255,255,.10);
+      --text: #eaf0ff;
+      --muted: rgba(234,240,255,.72);
+      --border: rgba(255,255,255,.12);
+      --shadow: 0 18px 60px rgba(0,0,0,.45);
       --radius: 18px;
+
+      --gold: #d4af37;
+      --blue: #2563eb;
+      --blue2: #1f3a8a;
     }
-    *{box-sizing:border-box}
+
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
     body{
       margin:0;
-      font-family:-apple-system,system-ui,Segoe UI,Roboto,Arial,sans-serif;
-      background:radial-gradient(1200px 500px at 20% -10%, rgba(37,99,235,0.15), transparent 60%),
-                 radial-gradient(900px 400px at 90% 10%, rgba(31,58,138,0.12), transparent 55%),
-                 var(--bg);
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      background:
+        radial-gradient(1200px 600px at 20% -10%, rgba(37,99,235,.30), transparent 55%),
+        radial-gradient(900px 500px at 80% 0%, rgba(212,175,55,.18), transparent 55%),
+        radial-gradient(900px 700px at 50% 120%, rgba(37,99,235,.22), transparent 55%),
+        var(--bg);
       color:var(--text);
+      line-height:1.45;
     }
-    a{color:inherit}
-    .wrap{max-width:980px;margin:0 auto;padding:56px 18px 40px}
-    header{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:22px}
+
+    a{ color:inherit; text-decoration:none; }
+    .container{ width:min(1100px, 92vw); margin:0 auto; }
+
+    /* Top bar */
+    header{
+      position:sticky;
+      top:0;
+      z-index:50;
+      backdrop-filter: blur(14px);
+      background: rgba(11,18,32,.65);
+      border-bottom: 1px solid var(--border);
+    }
+    .topbar{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      padding:12px 0;
+    }
     .brand{
-      display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:-0.02em
+      display:flex;
+      align-items:center;
+      gap:12px;
+      min-width: 0;
     }
-    .dot{
-      width:12px;height:12px;border-radius:50%;
-      background:linear-gradient(135deg,var(--accent),var(--primary));
-      box-shadow:0 0 0 6px rgba(37,99,235,0.12);
+    .logo{
+      width:44px;
+      height:44px;
+      border-radius: 999px;
+      background: var(--panel);
+      border: 1px solid var(--border);
+      display:grid;
+      place-items:center;
+      overflow:hidden;
+      flex: 0 0 auto;
+      box-shadow: 0 10px 30px rgba(0,0,0,.35);
+    }
+    .logo img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+    }
+    .brandtext{
+      display:flex;
+      flex-direction:column;
+      line-height:1.15;
+      min-width:0;
+    }
+    .brandtext strong{
+      font-size:14px;
+      letter-spacing:.2px;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+    .brandtext span{
+      font-size:12px;
+      color:var(--muted);
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+
+    nav{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
     }
     .pill{
-      display:inline-flex;align-items:center;gap:8px;
-      padding:7px 12px;border-radius:999px;
-      background:rgba(37,99,235,0.10);
-      border:1px solid rgba(37,99,235,0.22);
-      color:var(--primary);
-      font-size:12.5px;font-weight:700;
-      white-space:nowrap;
+      padding:8px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.03);
+      font-size:13px;
+      color: var(--muted);
     }
+    .pill:hover{ background: rgba(255,255,255,.06); color: var(--text); }
+
+    /* Hero */
+    .hero{
+      padding:56px 0 28px;
+    }
+    .heroGrid{
+      display:grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap:18px;
+      align-items:stretch;
+    }
+    @media (max-width: 900px){
+      .heroGrid{ grid-template-columns: 1fr; }
+    }
+
+    .card{
+      border: 1px solid var(--border);
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+    .heroMain{ padding:26px; }
+    .badgeRow{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-bottom:12px;
+    }
+    .badge{
+      font-size:12px;
+      padding:6px 10px;
+      border-radius:999px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.04);
+      color: var(--muted);
+    }
+    .badge.gold{ border-color: rgba(212,175,55,.35); color: rgba(255,235,180,.95); }
     h1{
-      margin:10px 0 12px;
-      font-size:40px;line-height:1.06;
-      letter-spacing:-0.03em;
+      margin: 0 0 10px;
+      font-size: clamp(28px, 3.4vw, 44px);
+      line-height:1.05;
+      letter-spacing:-.4px;
     }
     .sub{
-      margin:0 0 18px;
-      font-size:16.5px;line-height:1.6;
-      color:var(--muted);
-      max-width:72ch;
+      margin: 0 0 18px;
+      color: var(--muted);
+      font-size: 15px;
+      max-width: 62ch;
     }
-    .btns{display:flex;flex-wrap:wrap;gap:12px;margin-top:14px}
+    .ctaRow{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      margin-top: 12px;
+    }
     .btn{
-      display:inline-flex;align-items:center;justify-content:center;gap:10px;
-      padding:12px 16px;border-radius:14px;
-      text-decoration:none;font-weight:800;
-      border:1px solid transparent;
-      transition:transform .05s ease;
-      user-select:none;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      padding:12px 14px;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.05);
+      color: var(--text);
+      font-weight: 600;
+      font-size: 14px;
+      min-height: 44px;
     }
-    .btn:active{transform:translateY(1px)}
-    .btn.primary{background:var(--accent);color:#fff;box-shadow:0 10px 24px rgba(37,99,235,0.25)}
-    .btn.secondary{background:#fff;border-color:var(--border);color:var(--text)}
-    .grid{display:grid;grid-template-columns:1.15fr .85fr;gap:16px;margin-top:18px}
-    .card{
-      background:var(--card);
-      border:1px solid var(--border);
-      border-radius:var(--radius);
+    .btn.primary{
+      background: linear-gradient(180deg, rgba(37,99,235,.95), rgba(31,58,138,.95));
+      border-color: rgba(37,99,235,.55);
+      box-shadow: 0 18px 60px rgba(37,99,235,.25);
+    }
+    .btn.secondary{
+      background: rgba(255,255,255,.04);
+    }
+    .btn:hover{ transform: translateY(-1px); }
+    .btn:active{ transform: translateY(0); }
+
+    .heroSide{
       padding:18px;
-      box-shadow:var(--shadow);
+      display:flex;
+      flex-direction:column;
+      gap:12px;
     }
-    h2{margin:0 0 10px;font-size:18px;letter-spacing:-0.01em}
-    p{margin:0 0 10px;line-height:1.6;color:var(--muted)}
-    ul{margin:10px 0 0 18px;color:var(--muted);line-height:1.65}
-    .kpis{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:10px}
-    .kpi{
-      border:1px dashed rgba(37,99,235,0.35);
-      border-radius:14px;
-      padding:12px;
-      background:rgba(37,99,235,0.06);
+    .sideTitle{
+      font-weight:800;
+      letter-spacing:.2px;
+      font-size:14px;
+      color: rgba(255,255,255,.92);
     }
-    .kpi b{display:block;color:var(--text);margin-bottom:4px}
-    .note{font-size:12.5px;color:rgba(71,85,105,0.9)}
-    .section{margin-top:16px}
+    .sideText{
+      color: var(--muted);
+      font-size:13px;
+      margin-top:-4px;
+    }
+    .grid2{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:10px;
+    }
+    @media (max-width: 520px){
+      .grid2{ grid-template-columns: 1fr; }
+    }
+    .mini{
+      padding:14px;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.04);
+    }
+    .mini b{ display:block; margin-bottom:4px; }
+    .mini span{ color: var(--muted); font-size:13px; }
+
+    /* Sections */
+    section{ padding: 22px 0; }
+    .sectionHead{
+      display:flex;
+      align-items:flex-end;
+      justify-content:space-between;
+      gap:14px;
+      margin: 10px 0 12px;
+    }
+    .sectionHead h2{
+      margin:0;
+      font-size:22px;
+      letter-spacing:-.2px;
+    }
+    .sectionHead p{
+      margin:0;
+      color:var(--muted);
+      font-size:13px;
+      max-width: 60ch;
+    }
+
+    .cards3{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:12px;
+    }
+    @media (max-width: 900px){ .cards3{ grid-template-columns: 1fr; } }
+
+    .block{
+      padding:18px;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.04);
+    }
+    .block h3{
+      margin:0 0 6px;
+      font-size:16px;
+    }
+    .block p{ margin:0; color:var(--muted); font-size:13px; }
+
     .split{
-      display:grid;grid-template-columns:1fr 1fr;gap:16px
+      display:grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap:12px;
+      align-items:stretch;
     }
-    .footer{
-      margin-top:24px;
-      color:rgba(71,85,105,0.85);
-      font-size:12.5px;
-      display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap
+    @media (max-width: 900px){ .split{ grid-template-columns: 1fr; } }
+
+    .kpiRow{
+      display:grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap:10px;
+      margin-top:10px;
     }
-    .mutedlink{color:rgba(71,85,105,0.85);text-decoration:none}
-    .mutedlink:hover{text-decoration:underline}
-    @media (max-width:860px){
-      .grid,.split{grid-template-columns:1fr}
-      h1{font-size:34px}
+    @media (max-width: 900px){ .kpiRow{ grid-template-columns: repeat(2, 1fr); } }
+    .kpi{
+      padding:14px;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.03);
+    }
+    .kpi .label{ color: var(--muted); font-size:12px; }
+    .kpi .value{ font-weight:900; font-size:18px; margin-top:2px; }
+
+    .note{
+      padding:14px;
+      border-radius: 14px;
+      border: 1px dashed rgba(255,255,255,.20);
+      background: rgba(0,0,0,.18);
+      color: var(--muted);
+      font-size:13px;
+      margin-top: 12px;
+    }
+
+    footer{
+      padding: 30px 0 40px;
+      color: var(--muted);
+      font-size: 12px;
+      border-top: 1px solid var(--border);
+      margin-top: 24px;
+    }
+    .footerRow{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+    .tinyLink{
+      color: rgba(234,240,255,.85);
+      text-decoration: underline;
+      text-underline-offset: 3px;
     }
   </style>
 </head>
+
 <body>
-  <div class="wrap">
-    <header>
-      <div class="brand"><span class="dot"></span> Big Side Hustle</div>
-      <div class="pill">Structured Side Income • No hype</div>
-    </header>
+  <!-- Header / Brand bar -->
+  <header>
+    <div class="container">
+      <div class="topbar">
+        <a class="brand" href="#top" aria-label="Big Side Hustle home">
+          <div class="logo" aria-hidden="true">
+            <!-- Put your logo file in the repo root as: logo.png -->
+            <img src="/logo.png" alt="" />
+          </div>
+          <div class="brandtext">
+            <strong>Big Side Hustle</strong>
+            <span>Structured Side Income • No hype</span>
+          </div>
+        </a>
 
-    <main>
-      <div class="pill">Free community tool</div>
-      <h1>Structured Side Income.<br/>No hype.</h1>
-      <p class="sub">
-        Build secondary income with systems, real numbers, and structured tracking.
-        Start with the free Net Tracker (Delivery Edition) — and expand to other hustles over time.
-      </p>
-
-      <div class="btns">
-        <a class="btn primary" href="https://app.bigsidehustle.co.uk" target="_blank" rel="noreferrer">Open Free Net Tracker</a>
-        <a class="btn secondary" href="#community">Join the Community</a>
+        <nav aria-label="Primary navigation">
+          <a class="pill" href="#tool">Free Tool</a>
+          <a class="pill" href="#proof">Proof</a>
+          <a class="pill" href="#about">About</a>
+          <a class="pill" href="#community">Community</a>
+        </nav>
       </div>
+    </div>
+  </header>
 
-      <div class="grid">
-        <section class="card">
-          <h2>Start with real net profit</h2>
-          <p>Gross earnings look good. Net performance tells the truth.</p>
-
-          <div class="kpis">
-            <div class="kpi">
-              <b>Net after fuel</b>
-              <span class="note">See what you actually made.</span>
-            </div>
-            <div class="kpi">
-              <b>True £/hour</b>
-              <span class="note">Time worked changes everything.</span>
-            </div>
-            <div class="kpi">
-              <b>£ per mile</b>
-              <span class="note">Efficiency, not vibes.</span>
-            </div>
-            <div class="kpi">
-              <b>Repeatable shifts</b>
-              <span class="note">Keep what works. Drop what doesn’t.</span>
-            </div>
+  <main id="top">
+    <!-- HERO -->
+    <div class="container hero">
+      <div class="heroGrid">
+        <div class="card heroMain">
+          <div class="badgeRow">
+            <span class="badge gold">Free community tool</span>
+            <span class="badge">UK focused</span>
+            <span class="badge">Real net profit</span>
           </div>
 
-          <div class="section">
-            <h2>Free Tool: Net Tracker (Delivery Edition)</h2>
-            <p>Built for UK delivery drivers to track shifts, fuel, hours, and mileage — then calculate real net results.</p>
-            <div class="btns">
-              <a class="btn primary" href="https://app.bigsidehustle.co.uk" target="_blank" rel="noreferrer">Use the Free Tracker</a>
-              <a class="btn secondary" href="#about">Founded by Dean</a>
-            </div>
-            <p class="note">Note: data is stored locally on your device. Use the same phone + browser to keep your history.</p>
-          </div>
-        </section>
+          <h1>Structured Side Income.<br/>No hype.</h1>
+          <p class="sub">
+            Helping full-time workers build secondary income with real systems, real numbers, and structured tracking.
+            Start with the <b>free Net Shift Tracker</b> (Delivery Edition) and expand to other hustles over time.
+          </p>
 
-        <aside class="card" id="about">
-          <h2>Founded by Dean</h2>
-          <p class="note"><b>Founder — Big Side Hustle</b></p>
-          <p>
-            Big Side Hustle was created to bring structure to secondary income.
-          </p>
-          <p>
-            Too many people focus on gross earnings instead of real performance. Net profit, time, and efficiency tell the truth.
-          </p>
-          <p>
-            This platform is built around simple systems, practical tools, and measurable frameworks that help people track properly,
-            improve deliberately, and build multiple income streams without hype.
-          </p>
-          <p class="note">Delivery drivers are the starting point. Structured side income is the mission.</p>
-        </aside>
-      </div>
-
-      <section class="card section" id="community">
-        <h2>Big Side Hustle | Structured Side Income</h2>
-        <p>
-          Private community for people serious about increasing real net earnings through structured tracking and improvement.
-          No screenshots. No hype. Just systems.
-        </p>
-        <div class="split">
-          <div>
-            <ul>
-              <li>Weekly check-ins and tracking habits</li>
-              <li>Shift optimisation and performance reviews</li>
-              <li>Frameworks you can repeat (not motivation)</li>
-            </ul>
+          <div class="ctaRow">
+            <!-- Update if your tracker URL is different -->
+            <a class="btn primary" href="https://app.bigsidehustle.co.uk" target="_blank" rel="noopener">
+              Open Free Net Tracker
+            </a>
+            <a class="btn secondary" href="#community">
+              Join the Community
+            </a>
           </div>
-          <div>
-            <div class="btns">
-              <a class="btn primary" href="https://www.facebook.com/share/g/1AoHaTrfwJ/?mibextid=wwXIfr" target="_blank" rel="noreferrer">Join the Community</a>
-              <a class="btn secondary" href="https://app.bigsidehustle.co.uk" target="_blank" rel="noreferrer">Open the Tracker</a>
-            </div>
-            <p class="note">Tip: pin the tracker link inside the group so members always find it.</p>
+
+          <div class="note">
+            No screenshots. No revenue lies. Just profit clarity — net after fuel, time, and efficiency.
           </div>
         </div>
-      </section>
 
-      <div class="footer">
-        <span>© Big Side Hustle</span>
-        <span>
-          <a class="mutedlink" href="https://app.bigsidehustle.co.uk" target="_blank" rel="noreferrer">App</a>
-          ·
-          <a class="mutedlink" href="https://www.facebook.com/share/g/1AoHaTrfwJ/?mibextid=wwXIfr" target="_blank" rel="noreferrer">Community</a>
-        </span>
+        <aside class="card heroSide">
+          <div>
+            <div class="sideTitle">What this is</div>
+            <div class="sideText">
+              A simple platform built around repeatable systems and measurable frameworks —
+              so side income becomes structured, not chaotic.
+            </div>
+          </div>
+
+          <div class="grid2">
+            <div class="mini">
+              <b>Track real net</b>
+              <span>Gross looks good. Net tells the truth.</span>
+            </div>
+            <div class="mini">
+              <b>Time aware</b>
+              <span>£/hour changes everything.</span>
+            </div>
+            <div class="mini">
+              <b>Efficiency</b>
+              <span>£ per mile, fuel, and performance.</span>
+            </div>
+            <div class="mini">
+              <b>Systems</b>
+              <span>Repeat what works. Drop what doesn’t.</span>
+            </div>
+          </div>
+        </aside>
       </div>
-    </main>
-  </div>
+    </div>
+
+    <!-- WHAT I DO -->
+    <section>
+      <div class="container">
+        <div class="sectionHead">
+          <h2>What Big Side Hustle does</h2>
+          <p>Simple, practical steps that help people build structured secondary income while keeping their day job.</p>
+        </div>
+
+        <div class="cards3">
+          <div class="block">
+            <h3>1) Track real profit</h3>
+            <p>Stop guessing. Track net after fuel and time so you know what you actually made.</p>
+          </div>
+          <div class="block">
+            <h3>2) Build repeatable systems</h3>
+            <p>Templates, routines, and small habits that compound — no motivation required.</p>
+          </div>
+          <div class="block">
+            <h3>3) Turn hustle into assets</h3>
+            <p>Over time: tools, content, community, and frameworks that scale beyond “just doing shifts”.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROOF / 400 DELIVERY CHALLENGE -->
+    <section id="proof">
+      <div class="container">
+        <div class="sectionHead">
+          <h2>Proof: real numbers, not vibes</h2>
+          <p>Use this section to show your challenge stats as they grow (gross, fuel, net, hours).</p>
+        </div>
+
+        <div class="split">
+          <div class="block">
+            <h3>400 Deliveries. Structured System.</h3>
+            <p>
+              The goal isn’t “busy”. The goal is <b>profitable</b>.
+              This challenge exists to prove a repeatable method: track, review, improve.
+            </p>
+
+            <div class="kpiRow" aria-label="KPI cards">
+              <!-- Replace these placeholders with real numbers when ready -->
+              <div class="kpi">
+                <div class="label">Deliveries completed</div>
+                <div class="value">400</div>
+              </div>
+              <div class="kpi">
+                <div class="label">Gross earned</div>
+                <div class="value">£—</div>
+              </div>
+              <div class="kpi">
+                <div class="label">Fuel cost</div>
+                <div class="value">£—</div>
+              </div>
+              <div class="kpi">
+                <div class="label">Net after fuel</div>
+                <div class="value">£—</div>
+              </div>
+            </div>
+
+            <div class="note">
+              Tip: update these weekly. Even small numbers build trust if they’re consistent and transparent.
+            </div>
+          </div>
+
+          <div class="block">
+            <h3>Why it matters</h3>
+            <p>
+              Most people chase gross earnings and ignore costs.
+              When you track net, time, and efficiency, you can improve deliberately — and build long-term financial independence.
+            </p>
+            <div class="note">
+              Next upgrade: add a simple “Weekly breakdown” table once you’ve got 2–4 weeks of data.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FREE TOOL -->
+    <section id="tool">
+      <div class="container">
+        <div class="sectionHead">
+          <h2>Free Tool: Net Shift Tracker (Delivery Edition)</h2>
+          <p>Built for UK delivery drivers to track shifts, fuel, hours, and mileage — then calculate real net results.</p>
+        </div>
+
+        <div class="block">
+          <h3>What it helps you do</h3>
+          <p>
+            Calculate <b>net after fuel</b>, see <b>£/hour</b>, track <b>£ per mile</b>, and review performance trends — without spreadsheets or guesswork.
+          </p>
+          <div class="ctaRow" style="margin-top:14px;">
+            <a class="btn primary" href="https://app.bigsidehustle.co.uk" target="_blank" rel="noopener">
+              Use the Free Net Tracker
+            </a>
+            <!-- Optional: link to a short explainer video later -->
+            <a class="btn secondary" href="#about">How it works</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about">
+      <div class="container">
+        <div class="sectionHead">
+          <h2>About</h2>
+          <p>Keep this short, credible, and aligned with systems — not “guru”.</p>
+        </div>
+
+        <div class="split">
+          <div class="block">
+            <h3>Founded by Dean</h3>
+            <p>
+              Big Side Hustle is built for people who want structured secondary income while working a full-time job.
+              The focus is discipline over motivation, systems over ego, and real numbers over hype.
+            </p>
+            <div class="note">
+              You can expand later into other hustles — but the starting point is delivery drivers because it’s measurable and repeatable.
+            </div>
+          </div>
+
+          <div class="block">
+            <h3>Principles</h3>
+            <p>
+              • Track net, not just gross<br/>
+              • Build repeatable routines<br/>
+              • Review weekly, improve deliberately<br/>
+              • Compound tools + community over time
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- COMMUNITY -->
+    <section id="community">
+      <div class="container">
+        <div class="sectionHead">
+          <h2>Join the community</h2>
+          <p>Private group for people serious about increasing income and building long-term financial independence.</p>
+        </div>
+
+        <div class="block">
+          <h3>Big Side Hustle | Structured Side Income</h3>
+          <p>Tools, updates, frameworks, and progress tracking — built in public, improved with feedback.</p>
+
+          <div class="ctaRow" style="margin-top:14px;">
+            <!-- Your Facebook group share link -->
+            <a class="btn primary" href="https://www.facebook.com/share/g/1AoHaTrfwJ/?mibextid=wwXIfr" target="_blank" rel="noopener">
+              Join the Facebook Group
+            </a>
+            <a class="btn secondary" href="https://www.bigsidehustle.co.uk" target="_blank" rel="noopener">
+              Reload main site
+            </a>
+          </div>
+
+          <div class="note">
+            Note: If you want this page to be the “main brand site”, keep the message broad (structured side income).
+            The delivery tracker stays a featured entry point.
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footerRow">
+        <div>© <span id="year"></span> Big Side Hustle</div>
+        <div>
+          <a class="tinyLink" href="https://app.bigsidehustle.co.uk" target="_blank" rel="noopener">Net Tracker</a>
+          &nbsp;•&nbsp;
+          <a class="tinyLink" href="https://www.facebook.com/share/g/1AoHaTrfwJ/?mibextid=wwXIfr" target="_blank" rel="noopener">Community</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
