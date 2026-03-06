@@ -1,0 +1,80 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap');
+@import url('https://cdn.jsdelivr.net/npm/geist-font@1.1.0/dist/css/geist.css');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 225 14% 97%;
+    --foreground: 222 47% 11%;
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+    --primary: 43 51% 54%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 215 16% 34%;
+    --secondary-foreground: 222 47% 11%;
+    --muted: 215 16% 34%;
+    --muted-foreground: 215 16% 45%;
+    --accent: 43 51% 54%;
+    --accent-foreground: 222 47% 11%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 215 16% 85%;
+    --input: 215 16% 85%;
+    --ring: 43 51% 54%;
+    --radius: 0.5rem;
+
+    --font-sans: 'Geist', sans-serif;
+    --font-display: 'Space Grotesk', sans-serif;
+  }
+
+  .dark {
+    --background: 222 47% 11%;
+    --foreground: 210 40% 98%;
+    --card: 222 47% 11%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222 47% 11%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 43 51% 54%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 215 16% 34%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 215 16% 34%;
+    --muted-foreground: 215 16% 65%;
+    --accent: 43 51% 54%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 215 16% 34%;
+    --input: 215 16% 34%;
+    --ring: 43 51% 54%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display tracking-tight font-semibold;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  .glass {
+    @apply backdrop-blur-md bg-white/40 border border-white/20;
+  }
+  .shadow-elegant {
+    box-shadow: 0 10px 30px -10px hsl(var(--foreground) / 0.1);
+  }
+}
